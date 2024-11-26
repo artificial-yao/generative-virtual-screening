@@ -18,7 +18,6 @@ services:
       - "8082:8000"
     volumes:
       - ${DIFFDOCK_CACHE:-~/.cache/nim}:/home/nvs/.cache/nim/models/
-
     environment:
       - NGC_CLI_API_KEY=${NGC_CLI_API_KEY:?Error NGC_CLI_API_KEY not set}
       - NVIDIA_VISIBLE_DEVICES=${DIFFDOCK_VISIBLE_DEVICES:-0}
