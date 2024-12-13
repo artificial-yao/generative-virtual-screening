@@ -1,16 +1,16 @@
 version: '3'
 
 services:
-  alphafold:
-    image: nvcr.io/nim/deepmind/alphafold2:1.0.0
-    runtime: nvidia
-    ports:
-      - "8081:8000"
-    volumes:
-      - ${ALPHAFOLD2_CACHE:-~/.cache/nim/models}:/opt/nim/.cache/
-    environment:
-      - NGC_CLI_API_KEY=${NGC_CLI_API_KEY:?Error NGC_CLI_API_KEY not set}
-
+  #alphafold:
+  #  image: nvcr.io/nim/deepmind/alphafold2:1.0.0
+  #  runtime: nvidia
+  #  ports:
+  #    - "8081:8000"
+  #  volumes:
+  #    - ${ALPHAFOLD2_CACHE:-~/.cache/nim/models}:/opt/nim/.cache/
+  #  environment:
+  #    - NGC_CLI_API_KEY=${NGC_CLI_API_KEY:?Error NGC_CLI_API_KEY not set}
+  #
   diffdock:
     image: nvcr.io/nim/mit/diffdock:1.2.0
     runtime: nvidia
