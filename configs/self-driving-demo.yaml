@@ -6,5 +6,5 @@ paths:
   starting_molecule_csv: '../data/starting_molecule_smiles.csv'
   dsmbind_predictions_csv: '../data/dsmbind_predictions.csv'
 
-binding_affinity_threshold: -160000
+binding_affinity_threshold: -1600000
   
