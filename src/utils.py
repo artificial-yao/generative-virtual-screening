@@ -1,6 +1,19 @@
 import os
 import shutil
 import json
+import yaml
+
+######## File paths ########
+with open("../configs/self-driving-demo.yaml", "r") as f:
+    config = yaml.safe_load(f)
+
+protein_file_path = config['paths']['protein_file_path']
+diffdock_output_dir = config['paths']['diffdock_output_dir']
+dsmbind_input_dir = config['paths']['diffdock_output_dir']
+
+starting_molecule_csv = config['paths']['starting_molecule_csv']
+molmim_generated_csv = config['paths']['molmim_generated_csv']
+dsmbind_predictions_csv = config['paths']['dsmbind_predictions_csv']
 
 # reading in the input PDB/SDF/SMILES files as a string to be used for JSON request
 def file_to_json_compatible_string(file_path):
@@ -13,7 +26,7 @@ def file_to_json_compatible_string(file_path):
 
 def update_dataframe_molmim_generated_molecules(molmim_generated, 
                                                 starting_molecule_name, 
-                                                molmim_generated_csv = '../data/molmim_generated_molecules.csv',
+                                                molmim_generated_csv = molmim_generated_csv,
                                                 store_dataframe=True):
     import pandas as pd
 
@@ -46,9 +59,9 @@ def prepare_output_directory(output):
 # generate subfolders and files for diffdock outputs and dsmbind inputs
 def create_diffdock_outputs_dsmbind_inputs(molecule_name,
                                            diffdock_response,
-                                           diffdock_output_dir = "../data/diffdock_outputs/",
-                                           dsmbind_input_dir = "../data/dsmbind_inputs",
-                                           protein_file_path = "../data/protein_input_files/mpro_sarscov2.pdb"):
+                                           diffdock_output_dir = diffdock_output_dir,
+                                           dsmbind_input_dir = dsmbind_input_dir,
+                                           protein_file_path = protein_file_path):
     for i in range(len(diffdock_response['ligand_positions'])):
         ligand_subfolder_name = molecule_name + "_compound" + str(i)
         ligand_subfolder_in_diffdock = os.path.join(diffdock_output_dir, ligand_subfolder_name)
