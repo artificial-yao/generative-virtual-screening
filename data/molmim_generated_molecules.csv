@@ -1,5 +1,6 @@
 generated_compound_index,generated_smiles,molmim_qed_score,starting_molecule
-1,CC(C)(C)[C@H](NC(=O)C(F)(F)F)C(=O)N1C2CCC1CC2,0.8503345099143261,Nirmatrelvir
-2,CC(C)(C)[C@H](NC(=O)C(F)(F)F)C(=O)N1C2CCC1CC2,0.8503345099143261,Nirmatrelvir
-3,CC(C)(C)[C@H](NC(=O)C(F)(F)F)C(=O)N1C2CCC1CC2,0.8503345099143261,Nirmatrelvir
+0,CC(C)c1nc(NC(=O)C(F)(F)F)ncc1-c1ccccc1,0.9387447152537055,Nirmatrelvir
+1,CC(C)(C)[C@H](NC(=O)C(F)(F)F)C(=O)N1Cc2ccccc2C1,0.9071929271351654,Nirmatrelvir
+2,CC(C)(C)[C@H](NC(=O)C(F)(F)F)C(=O)N1CC2CCC1CC2,0.8496373095154023,Nirmatrelvir
+3,CC(C)(C)[C@H](NC(=O)C(F)(F)F)C(=O)N1CC2CCC1CC2,0.8496373095154023,Nirmatrelvir
 4,CC(C)(C)[C@H](NC(=O)C(F)(F)F)C(=O)N1CC2CCC1CC2,0.8496373095154023,Nirmatrelvir
