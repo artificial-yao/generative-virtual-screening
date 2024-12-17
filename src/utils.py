@@ -26,8 +26,7 @@ def file_to_json_compatible_string(file_path):
 
 def update_dataframe_molmim_generated_molecules(molmim_generated, 
                                                 starting_molecule_name, 
-                                                molmim_generated_csv = molmim_generated_csv,
-                                                store_dataframe=True):
+                                                molmim_generated_csv = molmim_generated_csv):
     import pandas as pd
 
     df = pd.DataFrame(molmim_generated)
@@ -39,7 +38,13 @@ def update_dataframe_molmim_generated_molecules(molmim_generated,
                     inplace=True)
     df['starting_molecule'] = starting_molecule_name
 
-    if store_dataframe:
+    if os.path.exists(molmim_generated_csv):
+        print("The CSV file exists.")
+        df_old = pd.read_csv(molmim_generated_csv)
+        df_merged = pd.concat([df_old, df], ignore_index=True)
+
+        df_merged.to_csv(molmim_generated_csv, index=False)
+    else:
         df.to_csv(molmim_generated_csv, index=False)
 
 
