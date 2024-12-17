@@ -47,7 +47,12 @@ utils.create_diffdock_outputs_dsmbind_inputs(molecule_name, diffdock_response)
 os.system("python /workspace/bionemo/examples/molecule/dsmbind/infer.py")
 
 df_molmim = pd.read_csv(molmim_generated_csv) 
-df_dsmbind = pd.read_csv()
+df_dsmbind = pd.read_csv(dsmbind_predictions_csv)
 df_joined = pd.concat([df_molmim, df_dsmbind], axis=1)
 
 df_joined.to_csv('../data/results.csv')
+
+binding_affinity_threshold = config['binding_affinity_threshold']
+if len(df_joined[df_joined['DSMBind_predictions'] < binding_affinity_threshold]) < 5:
+    print("yes")
+
