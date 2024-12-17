@@ -3,24 +3,31 @@ import os
 import shutil
 import json
 import pandas as pd
+import yaml
 
 import utils, request_models
 
 
 ######## File paths ########
-# predicted target protein file path
-protein_file_path = "../data/protein_input_files/mpro_sarscov2.pdb"
-molmim_generated_csv = '../data/molmim_generated_molecules.csv'
-diffdock_output_dir = "../data/diffdock_outputs/"
-utils.prepare_output_directory(diffdock_output_dir)
+with open("../configs/self-driving-demo.yaml", "r") as f:
+    config = yaml.safe_load(f)
 
-dsmbind_input_dir = "../data/dsmbind_inputs"
+protein_file_path = config['paths']['protein_file_path']
+diffdock_output_dir = config['paths']['diffdock_output_dir']
+dsmbind_input_dir = config['paths']['diffdock_output_dir']
+
+starting_molecule_csv = config['paths']['starting_molecule_csv']
+molmim_generated_csv = config['paths']['molmim_generated_csv']
+dsmbind_predictions_csv = config['paths']['dsmbind_predictions_csv']
+
+utils.prepare_output_directory(diffdock_output_dir)
 utils.prepare_output_directory(dsmbind_input_dir)
 
 # Get folded protein
 folded_protein = utils.file_to_json_compatible_string(protein_file_path)
 
-df_starting_molecules = pd.read_csv('../data/starting_molecule_smiles.csv')
+# Get starting molecules
+df_starting_molecules = pd.read_csv(starting_molecule_csv)
 
 # Round 0
 print("Round 0")
@@ -37,11 +44,10 @@ diffdock_response = request_models.call_diffdock(folded_protein, generated_ligan
 utils.create_diffdock_outputs_dsmbind_inputs(molecule_name, diffdock_response)
 
 # Binding Affinity with DSMBind
-
 os.system("python /workspace/bionemo/examples/molecule/dsmbind/infer.py")
 
 df_molmim = pd.read_csv(molmim_generated_csv) 
-df_dsmbind = pd.read_csv('../data/dsmbind_predictions.csv')
+df_dsmbind = pd.read_csv()
 df_joined = pd.concat([df_molmim, df_dsmbind], axis=1)
 
 df_joined.to_csv('../data/results.csv')

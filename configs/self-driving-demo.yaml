@@ -1,2 +1,10 @@
-data:
+paths:
+  protein_file_path: "../data/protein_input_files/mpro_sarscov2.pdb"
+  molmim_generated_csv: '../data/molmim_generated_molecules.csv'
+  diffdock_output_dir: "../data/diffdock_outputs/"
+  dsmbind_input_dir: "../data/dsmbind_inputs"
+  starting_molecule_csv: '../data/starting_molecule_smiles.csv'
+  dsmbind_predictions_csv: '../data/dsmbind_predictions.csv'
+
+binding_affinity_threshold: -160000
   
