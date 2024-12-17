@@ -1,0 +1,47 @@
+import requests
+import os
+import shutil
+import json
+import pandas as pd
+
+import utils, request_models
+
+
+######## File paths ########
+# predicted target protein file path
+protein_file_path = "../data/protein_input_files/mpro_sarscov2.pdb"
+molmim_generated_csv = '../data/molmim_generated_molecules.csv'
+diffdock_output_dir = "../data/diffdock_outputs/"
+utils.prepare_output_directory(diffdock_output_dir)
+
+dsmbind_input_dir = "../data/dsmbind_inputs"
+utils.prepare_output_directory(dsmbind_input_dir)
+
+# Get folded protein
+folded_protein = utils.file_to_json_compatible_string(protein_file_path)
+
+df_starting_molecules = pd.read_csv('../data/starting_molecule_smiles.csv')
+
+# Round 0
+print("Round 0")
+molecule_name = df_starting_molecules['Molecules'][0]
+molecule = df_starting_molecules['Smiles'][0]
+
+# Molecular Generation with MolMIM
+molmim_response = request_models.call_molmim(molecule)
+generated_ligands = '\n'.join([v['smiles'] for v in molmim_response['generated']])
+utils.update_dataframe_molmim_generated_molecules(molmim_response['generated'], molecule_name)
+
+# Protein-Ligand Docking with DiffDock
+diffdock_response = request_models.call_diffdock(folded_protein, generated_ligands)
+utils.create_diffdock_outputs_dsmbind_inputs(molecule_name, diffdock_response)
+
+# Binding Affinity with DSMBind
+
+os.system("python /workspace/bionemo/examples/molecule/dsmbind/infer.py")
+
+df_molmim = pd.read_csv(molmim_generated_csv) 
+df_dsmbind = pd.read_csv('../data/dsmbind_predictions.csv')
+df_joined = pd.concat([df_molmim, df_dsmbind], axis=1)
+
+df_joined.to_csv('../data/results.csv')
