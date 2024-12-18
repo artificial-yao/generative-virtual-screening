@@ -13,7 +13,7 @@ Step 1. Start docker container for MolMIM NIM and DiffDock NIM.
 
 ```bash
 cd deploy
-docker compose up
+./launch.sh
 ```
 
 Step 2. Since DSMBind model is not implemented as a NIM yet, we need to use bionemo-framework to start the docker container. Please use the ["release-v1.10-virtual-screening" forked and edited branch](https://github.com/artificial-yao/bionemo-framework/tree/release-v1.10-virtual-screening). 
