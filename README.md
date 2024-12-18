@@ -27,7 +27,7 @@ cd bionemo-framework
 ./launch.sh dev -s
 ```
 
-Step 3. Now you should have three docker containers running. If you use VS Code, start a docker container editing environment so you can edit and run jupyter notebooks and python files.
+Step 3. Now you should have three docker containers running. If you use VS Code, start a docker container editing environment so you can edit and run jupyter notebooks and python files. You can attach VS Code to the running bionemo-framework docker container.
 
 ### Get Started
 
