@@ -18,9 +18,27 @@ cd deploy
 
 Note: sometimes DiffDock container needs to restart (I am not sure why). The first time often times it fails.
 
-Step 2. Since DSMBind model is not implemented as a NIM yet, we need to use bionemo-framework to start the docker container. Please use the ["release-v1.10-virtual-screening" forked and edited branch](https://github.com/artificial-yao/bionemo-framework/tree/release-v1.10-virtual-screening). 
+Step 2. Set up bionemo-framework and folder structure. 
+
+Since DSMBind model is not implemented as a NIM yet, we need to use bionemo-framework to start the docker container. Please use the ["release-v1.10-virtual-screening" forked and edited branch](https://github.com/artificial-yao/bionemo-framework/tree/release-v1.10-virtual-screening). 
+
+My folder structure is shown below:
+projects
+├── generative-virtual-screening         # this repo
+├── bionemo-framework                    # bionemo-framework repo as mentioned
+...
+
+Then, in order to see "generative-virtual-screening" folder inside of bionemo-framework docker container, create a symbolic link.
+
+```bash
+cd projects
+ln -s generative-virtual-screening bionemo-framework/generative-virtual-screening
+```
+
 
 The steps to do this is to clone the above branch of bionemo-framework and start the bionemo-framework docker container. You want to follow steps in the README file step-by-step to set everything up. launch.sh is edited for this project. We use port 8002 and 8003 for MolMIM and DiffDock: the ports forwarding needs to happen so that we can call the NIMs inside of bionemmo-framework docker container. Volune mounting is added as well. 
+
+Step 3. Start bionemo-framework docker container for development. 
 
 After you follow the steps in README in bionemo-framework repo, then do the following:
 
@@ -29,7 +47,7 @@ cd bionemo-framework
 ./launch.sh dev -s
 ```
 
-Step 3. Now you should have three docker containers running. If you use VS Code, start a docker container editing environment so you can edit and run jupyter notebooks and python files. You can attach VS Code to the running bionemo-framework docker container.
+Step 4. Now you should have three docker containers running. If you use VS Code, start a docker container editing environment so you can edit and run jupyter notebooks and python files. You can attach VS Code to the running bionemo-framework docker container.
 
 ### Get Started
 
