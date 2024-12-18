@@ -49,6 +49,13 @@ cd bionemo-framework
 
 Step 4. Now you should have three docker containers running. If you use VS Code, start a docker container editing environment so you can edit and run jupyter notebooks and python files. You can attach VS Code to the running bionemo-framework docker container.
 
+Step 5. You can either run the src/self-driving-demo.ipynb in an interactive environment, or run below commands:
+
+```bash
+cd generative-virtual-screening/src
+python self-driving-demo.py
+```
+
 ### Get Started
 
 * [Deploy](deploy/)
