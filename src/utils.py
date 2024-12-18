@@ -69,6 +69,13 @@ def delete_datasets(file_path):
     else:
         print(f"File '{file_path}' does not exist.")
 
+# delete folders in folder
+def delete_folders_in_folder(path):
+    """Deletes all folders within the specified directory."""
+    for entry in os.scandir(path):
+        if entry.is_dir():
+            shutil.rmtree(entry.path)
+
 # generate subfolders and files for diffdock outputs and dsmbind inputs
 def create_diffdock_outputs_dsmbind_inputs(molecule_name,
                                            diffdock_response,
