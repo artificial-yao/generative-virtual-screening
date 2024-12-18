@@ -1,0 +1,16 @@
+,generated_compound_index,generated_smiles,molmim_qed_score,starting_molecule,DSMBind_predictions
+0,0,CC(C)(C)[C@@H](NC(=O)C(F)(F)F)C(=O)N1CCc2ncccc21,0.9033535745489498,Nirmatrelvir,-1196891.75
+1,1,CC(C)(C)[C@@H](NC(=O)C(F)(F)F)C(=O)N1CCc2ncccc21,0.9033535745489498,Nirmatrelvir,-1401404.5
+2,2,CC(C)(C)[C@@H](NC(=O)C(F)(F)F)C(=O)N1CCc2ncccc21,0.9033535745489498,Nirmatrelvir,-1231866.5
+3,3,CC(C)(C)[C@@H](NC(=O)C(F)(F)F)C(=O)N1CCOc2ccccc21,0.8968141217621349,Nirmatrelvir,-1160064.125
+4,4,CC(C)(C)[C@@H](NC(=O)C(F)(F)F)C(=O)N1CCOc2ccccc21,0.8968141217621349,Nirmatrelvir,-1504411.25
+5,0,Cn1cnc(Cn2c(CO)nc(C3CC3)c2Br)n1,0.9206976927417408,Ensitrelvir,-1562578.5
+6,1,Cn1cnc(Cn2c(CO)nc(C3CC3)cc2=O)c1,0.8630282775788669,Ensitrelvir,-1567559.375
+7,2,CC[C@H](C)c1nc(Cl)c2nc(C3CC3)cn2n1,0.8404364918471607,Ensitrelvir,-1562036.625
+8,3,Cn1cnc(Cn2c(=O)nc(C3CC3)c(C(=O)O)c2Cl)n1,0.83173453669432,Ensitrelvir,-1528728.625
+9,4,Cn1cnc(Cn2c(Cl)cnc(C3CC3)c2=O)n1,0.8288269293986124,Ensitrelvir,-1394867.625
+10,0,CC(C)C(=O)OC[C@H]1O[C@@H](n2ccc(N)n2)c2ccc(F)c(F)c2O1,0.8481903203119034,Molnupiravir,-1456110.0
+11,1,CC(C)C(=O)OC[C@H]1O[C@@H](n2ccc(-c3ccccc3F)n2)C[C@H]1O,0.840805775763688,Molnupiravir,-1701711.75
+12,2,CC(C)C(=O)OC[C@H](O)Cn1ccc(-c2ccccc2F)n1,0.8314347911418847,Molnupiravir,-1646968.0
+13,3,CC(C)C(=O)OC[C@H]1O[C@@H](n2ccc(N)n2)CN2C[C@H](F)C[C@H]21,0.8305143997423524,Molnupiravir,-1393417.625
+14,4,CC(C)C(=O)OC[C@H](O)Cn1ccc(-c2ccccc2)cc1=O,0.8287362489841681,Molnupiravir,-1483220.25
