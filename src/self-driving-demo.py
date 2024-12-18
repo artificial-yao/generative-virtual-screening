@@ -14,7 +14,7 @@ with open("../configs/self-driving-demo.yaml", "r") as f:
 
 protein_file_path = config['paths']['protein_file_path']
 diffdock_output_dir = config['paths']['diffdock_output_dir']
-dsmbind_input_dir = config['paths']['diffdock_output_dir']
+dsmbind_input_dir = config['paths']['dsmbind_input_dir']
 
 starting_molecule_csv = config['paths']['starting_molecule_csv']
 molmim_generated_csv = config['paths']['molmim_generated_csv']
@@ -23,6 +23,8 @@ results_csv = config['paths']['results_csv']
 
 utils.prepare_output_directory(diffdock_output_dir)
 utils.prepare_output_directory(dsmbind_input_dir)
+utils.delete_folders_in_folder(diffdock_output_dir)
+utils.delete_folders_in_folder(dsmbind_input_dir)
 
 utils.delete_datasets(molmim_generated_csv)
 utils.delete_datasets(dsmbind_predictions_csv)
