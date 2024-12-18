@@ -9,7 +9,7 @@ with open("../configs/self-driving-demo.yaml", "r") as f:
 
 protein_file_path = config['paths']['protein_file_path']
 diffdock_output_dir = config['paths']['diffdock_output_dir']
-dsmbind_input_dir = config['paths']['diffdock_output_dir']
+dsmbind_input_dir = config['paths']['dsmbind_input_dir']
 
 starting_molecule_csv = config['paths']['starting_molecule_csv']
 molmim_generated_csv = config['paths']['molmim_generated_csv']
