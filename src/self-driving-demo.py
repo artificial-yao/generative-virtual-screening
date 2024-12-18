@@ -57,7 +57,9 @@ df_joined = pd.concat([df_molmim, df_dsmbind], axis=1)
 
 df_joined.to_csv('../data/results.csv')
 
-binding_affinity_threshold = config['binding_affinity_threshold']
-if len(df_joined[df_joined['DSMBind_predictions'] < binding_affinity_threshold]) < 5:
+threshold_binding_affinity = config['threshold_binding_affinity']
+threshold_for_number_of_selected_molecules = config['threshold_for_number_of_selected_molecules']
+
+if len(df_joined[df_joined['DSMBind_predictions'] < threshold_binding_affinity]) < 5:
     print("yes")
 
