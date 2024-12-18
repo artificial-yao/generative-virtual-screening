@@ -84,7 +84,7 @@ def create_diffdock_outputs_dsmbind_inputs(molecule_name,
                                            protein_file_path = protein_file_path):
     for i in range(len(diffdock_response['ligand_positions'])):
         ligand_subfolder_name = molecule_name + "_compound" + str(i)
-        print("ligand subfolders are ", ligand_subfolder_name)
+        
         # DiffDock subfolders
         ligand_subfolder_in_diffdock = os.path.join(diffdock_output_dir, ligand_subfolder_name)
         prepare_output_directory(ligand_subfolder_in_diffdock)
