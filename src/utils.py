@@ -61,6 +61,14 @@ def prepare_output_directory(output):
         shutil.rmtree(output)
     os.makedirs(output)
 
+# delete datasets
+def delete_datasets(file_path):
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        print(f"File '{file_path}' deleted successfully.")
+    else:
+        print(f"File '{file_path}' does not exist.")
+
 # generate subfolders and files for diffdock outputs and dsmbind inputs
 def create_diffdock_outputs_dsmbind_inputs(molecule_name,
                                            diffdock_response,
