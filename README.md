@@ -16,6 +16,8 @@ cd deploy
 ./launch.sh
 ```
 
+Note: sometimes DiffDock container needs to restart (I am not sure why). The first time often times it fails.
+
 Step 2. Since DSMBind model is not implemented as a NIM yet, we need to use bionemo-framework to start the docker container. Please use the ["release-v1.10-virtual-screening" forked and edited branch](https://github.com/artificial-yao/bionemo-framework/tree/release-v1.10-virtual-screening). 
 
 The steps to do this is to clone the above branch of bionemo-framework and start the bionemo-framework docker container. You want to follow steps in the README file step-by-step to set everything up. launch.sh is edited for this project. We use port 8002 and 8003 for MolMIM and DiffDock: the ports forwarding needs to happen so that we can call the NIMs inside of bionemmo-framework docker container. Volune mounting is added as well. 
