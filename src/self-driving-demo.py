@@ -62,6 +62,33 @@ df_joined.to_csv('../data/results.csv')
 threshold_binding_affinity = config['threshold_binding_affinity']
 threshold_for_number_of_selected_molecules = config['threshold_for_number_of_selected_molecules']
 
-if len(df_joined[df_joined['DSMBind_predictions'] < threshold_binding_affinity]) < 5:
-    print("yes")
+################# SELF-DRIVING LOOP STARTING ####################
+rd = 0
+while len(df_joined[df_joined['DSMBind_predictions'] < threshold_binding_affinity]) < threshold_for_number_of_selected_molecules:
+    rd = rd + 1
+    print(f"Round {rd}")
+
+    molecule_name = df_starting_molecules['Molecules'][rd]
+    molecule = df_starting_molecules['Smiles'][rd]
+
+    # Molecular Generation with MolMIM
+    print("MolMIM...")
+    molmim_response = request_models.call_molmim(molecule)
+    generated_ligands = '\n'.join([v['smiles'] for v in molmim_response['generated']])
+    utils.update_dataframe_molmim_generated_molecules(molmim_response['generated'], molecule_name)
+
+    # Protein-Ligand Docking with DiffDock
+    print("DiffDock...")
+    diffdock_response = request_models.call_diffdock(folded_protein, generated_ligands)
+    utils.create_diffdock_outputs_dsmbind_inputs(molecule_name, diffdock_response)
+
+    # Binding Affinity with DSMBind
+    print("DSMBind...")
+    os.system("python /workspace/bionemo/examples/molecule/dsmbind/infer.py")
+
+    df_molmim = pd.read_csv(molmim_generated_csv) 
+    df_dsmbind = pd.read_csv(dsmbind_predictions_csv)
+    df_joined = pd.concat([df_molmim, df_dsmbind], axis=1)
+
+    df_joined.to_csv('../data/results.csv')
 
