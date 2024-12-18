@@ -19,12 +19,14 @@ dsmbind_input_dir = config['paths']['diffdock_output_dir']
 starting_molecule_csv = config['paths']['starting_molecule_csv']
 molmim_generated_csv = config['paths']['molmim_generated_csv']
 dsmbind_predictions_csv = config['paths']['dsmbind_predictions_csv']
+results_csv = config['paths']['results_csv']
 
 utils.prepare_output_directory(diffdock_output_dir)
 utils.prepare_output_directory(dsmbind_input_dir)
 
 utils.delete_datasets(molmim_generated_csv)
 utils.delete_datasets(dsmbind_predictions_csv)
+utils.delete_datasets(results_csv)
 
 # Get folded protein
 folded_protein = utils.file_to_json_compatible_string(protein_file_path)

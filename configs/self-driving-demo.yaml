@@ -5,6 +5,7 @@ paths:
   dsmbind_input_dir: "../data/dsmbind_inputs"
   starting_molecule_csv: '../data/starting_molecule_smiles.csv'
   dsmbind_predictions_csv: '../data/dsmbind_predictions.csv'
+  results_csv: '../data/results.csv'
 
 binding_affinity_threshold: -1600000
   
