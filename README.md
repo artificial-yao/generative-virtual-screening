@@ -23,10 +23,12 @@ Step 2. Set up bionemo-framework and folder structure.
 Since DSMBind model is not implemented as a NIM yet, we need to use bionemo-framework to start the docker container. Please use the ["release-v1.10-virtual-screening" forked and edited branch](https://github.com/artificial-yao/bionemo-framework/tree/release-v1.10-virtual-screening). 
 
 My folder structure is shown below:
+```
 projects
 ├── generative-virtual-screening         # this repo
 ├── bionemo-framework                    # bionemo-framework repo as mentioned
 ...
+```
 
 Then, in order to see "generative-virtual-screening" folder inside of bionemo-framework docker container, create a symbolic link.
 
